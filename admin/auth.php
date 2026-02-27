@@ -4,7 +4,7 @@
 session_start();
 
 // ihtiyaç olan dosyaları çağırıyorum
-require_once 'includes/Database.php';
+require_once '../includes/Database.php';
 
 // gerekli nesneleri oluşturuyorum
 $database = new Database();

@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --ana-renk: #1e3a8a;
+    --vurgu-renk: #3b82f6;
+    --arka-plan: #f8fafc;
+    --metin-koyu: #0f172a;
+    --metin-gri: #64748b;
+    --sidebar-bg: #0f172a; /* Çok koyu antrasit/lacivert */
+    --sidebar-hover: #1e293b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--arka-plan);
+    color: var(--metin-koyu);
+}
+
+/* ANA YAPI */
+.admin-layout {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- SOL MENÜ (SIDEBAR) --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--vurgu-renk);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 20px 0;
+    flex: 1;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 14px 24px;
+    transition: all 0.2s;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.sidebar-menu a:hover, .sidebar-menu li.active a {
+    background-color: var(--sidebar-hover);
+    color: white;
+    border-right: 4px solid var(--vurgu-renk);
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ef4444; /* Çıkış butonu kırmızısı */
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+.logout-btn:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* --- ANA İÇERİK --- */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header-title h1 {
+    font-size: 26px;
+    color: var(--metin-koyu);
+    margin-bottom: 6px;
+}
+
+.header-title p {
+    color: var(--metin-gri);
+    font-size: 15px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--vurgu-renk);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    font-size: 18px;
+    border: 1px solid #e2e8f0;
+}
+
+/* --- İSTATİSTİK KARTLARI --- */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.06);
+}
+
+.card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    background-color: #eff6ff;
+    color: var(--vurgu-renk);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.card-info h3 {
+    font-size: 14px;
+    color: var(--metin-gri);
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.card-info span {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--metin-koyu);
+}
+
+
+/* ::::: SERVICES MODAL ::::: */
+
+/* Popup (Modal) Arka Planı */
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); }
+
+/* Popup */
+.modal-content { background-color: #fff; margin: 2% auto; padding: 30px; border-radius: 12px; width: 50%; max-width: 600px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); position: relative; animation: modalAcin 0.3s; }
+@keyframes modalAcin { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
+
+/* Kapatma buttonu */
+.close-btn { position: absolute; top: 20px; right: 25px; color: #64748b; font-size: 24px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.close-btn:hover { color: #ef4444; }
+
+/* Form */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #334155; }
+.form-control { width: 100%; padding: 10px 15px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; }
+.form-control:focus { border-color: #3b82f6; outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+.btn-submit { background-color: #10b981; color: white; padding: 12px 24px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 15px; width: 100%; }
+.btn-submit:hover { background-color: #059669; }
