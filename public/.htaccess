@@ -1,0 +1,17 @@
+# Bu .htaccess "front controller" desenini uygular.
+# Var olan dosya/klasor ise (css, js, resim) dogrudan servis edilir.
+# Yoksa TUM istekler index.php'ye devredilir; router orada karar verir.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Var olan dosyalari ve klasorleri oldugu gibi birak
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Geri kalan her istegi index.php'ye yolla, query string'i koru (QSA)
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Guvenlik: dizin listelenmesin
+Options -Indexes

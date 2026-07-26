@@ -2,5 +2,15 @@
 .DS_Store
 Thumbs.db
 
-# İleride eklenebilecek geçici dosyalar
+# Composer bağımlılıkları (sunucuda `composer install` ile üretilir)
+/vendor/
+
+# Ortam değişkenleri (şifre içerir, ASLA git'e girmez)
+.env
+
+# Yüklenen dosyalar (kod değil, kullanıcı verisi)
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# Geliştirici geçici dosyaları
 hash.php

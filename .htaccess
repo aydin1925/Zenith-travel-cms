@@ -1,0 +1,14 @@
+# Kök dizine gelen tüm istekleri public/ altına yönlendir.
+# Amac: web-root disina konmasi gereken app/, config/, .env vs.
+# icin ekstra koruma. Hostinger'da domain'in document root'unu
+# dogrudan /public'e ayarlayabilirsen bu dosyaya gerek kalmaz.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # /Zenith  ->  /Zenith/public/  seklinde yonlendir
+    RewriteRule ^$ public/ [L]
+
+    # /Zenith/xxx -> /Zenith/public/xxx  (internal rewrite, URL degismez)
+    RewriteRule (.*) public/$1 [L]
+</IfModule>
